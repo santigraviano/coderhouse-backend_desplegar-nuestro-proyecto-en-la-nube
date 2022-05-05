@@ -18,8 +18,10 @@ const start = async () => {
 
   connectIO(server)
 
-  server.listen(args.port, () => {
-    logger.log({ label: 'app', message: `Worker with pid ${process.pid} listening to port ${ args.port }` })
+  const PORT = process.env.PORT || args.port || 8080
+
+  server.listen(PORT, () => {
+    logger.log({ label: 'app', message: `Worker with pid ${process.pid} listening to port ${ PORT }` })
   })
 }
 
